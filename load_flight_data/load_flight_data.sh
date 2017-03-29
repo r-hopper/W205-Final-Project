@@ -62,7 +62,7 @@ NEW_FILE2="on_time_2016_2.csv"
 tail -n +2 "$OLD_FILE2" > "$NEW_FILE2"
 
 OLD_FILE3="On_Time_On_Time_Performance_2016_3.csv"
-NEW_FILE3="hon_time_2016_3.csv"
+NEW_FILE3="on_time_2016_3.csv"
 tail -n +2 "$OLD_FILE3" > "$NEW_FILE3"
 
 OLD_FILE4="On_Time_On_Time_Performance_2016_4.csv"
@@ -74,7 +74,7 @@ NEW_FILE5="on_time_2016_5.csv"
 tail -n +2 "$OLD_FILE5" > "$NEW_FILE5"
 
 OLD_FILE6="On_Time_On_Time_Performance_2016_6.csv"
-NEW_FILE6="hon_time_2016_6.csv"
+NEW_FILE6="on_time_2016_6.csv"
 tail -n +2 "$OLD_FILE6" > "$NEW_FILE6"
 
 OLD_FILE7="On_Time_On_Time_Performance_2016_7.csv"
