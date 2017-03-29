@@ -25,18 +25,18 @@ URL10="https://transtats.bts.gov//PREZIP/On_Time_On_Time_Performance_2016_10.zip
 URL11="https://transtats.bts.gov//PREZIP/On_Time_On_Time_Performance_2016_11.zip"
 URL12="https://transtats.bts.gov//PREZIP/On_Time_On_Time_Performance_2016_12.zip"
 
-wget "$URL1" -O --no-check-certificate On_Time_On_Time_Performance_2016_1.zip
-wget "$URL2" -O --no-check-certificate On_Time_On_Time_Performance_2016_2.zip 
-wget "$URL3" -O --no-check-certificate On_Time_On_Time_Performance_2016_3.zip
-wget "$URL4" -O --no-check-certificate On_Time_On_Time_Performance_2016_4.zip
-wget "$URL5" -O --no-check-certificate On_Time_On_Time_Performance_2016_5.zip
-wget "$URL6" -O --no-check-certificate On_Time_On_Time_Performance_2016_6.zip
-wget "$URL7" -O --no-check-certificate On_Time_On_Time_Performance_2016_7.zip
-wget "$URL8" -O --no-check-certificate On_Time_On_Time_Performance_2016_8.zip
-wget "$URL9" -O --no-check-certificate On_Time_On_Time_Performance_2016_9.zip
-wget "$URL10" -O --no-check-certificate On_Time_On_Time_Performance_2016_10.zip
-wget "$URL11" -O --no-check-certificate On_Time_On_Time_Performance_2016_11.zip
-wget "$URL12" -O --no-check-certificate On_Time_On_Time_Performance_2016_12.zip
+wget --no-check-certificate "$URL1" -O On_Time_On_Time_Performance_2016_1.zip
+wget --no-check-certificate "$URL2" -O On_Time_On_Time_Performance_2016_2.zip 
+wget --no-check-certificate "$URL3" -O On_Time_On_Time_Performance_2016_3.zip
+wget --no-check-certificate "$URL4" -O On_Time_On_Time_Performance_2016_4.zip
+wget --no-check-certificate "$URL5" -O On_Time_On_Time_Performance_2016_5.zip
+wget --no-check-certificate "$URL6" -O On_Time_On_Time_Performance_2016_6.zip
+wget --no-check-certificate "$URL7" -O On_Time_On_Time_Performance_2016_7.zip
+wget --no-check-certificate "$URL8" -O On_Time_On_Time_Performance_2016_8.zip
+wget --no-check-certificate "$URL9" -O On_Time_On_Time_Performance_2016_9.zip
+wget --no-check-certificate "$URL10" -O On_Time_On_Time_Performance_2016_10.zip
+wget --no-check-certificate "$URL11" -O On_Time_On_Time_Performance_2016_11.zip
+wget --no-check-certificate "$URL12" -O On_Time_On_Time_Performance_2016_12.zip
 
 # Unzip data
 unzip On_Time_On_Time_Performance_2016_1.zip
