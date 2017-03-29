@@ -1,4 +1,4 @@
--- Creating flight_data schema
+-- Creating flight_data schema in Hive
 
 -- Jan 2016
 DROP TABLE IF EXISTS flights_2016_1;
@@ -122,3 +122,7 @@ WITH SERDEPROPERTIES(
 STORED AS TEXTFILE
 LOCATION
 '/user/w205/final_project/flight_data/2016_1';
+
+
+
+
