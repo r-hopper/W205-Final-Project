@@ -1,5 +1,9 @@
 # Load all data from 2016
 
+
+#!/bin/bash
+
+
 ##############################
 # Name files transtats.bts.gov
 URL="https://transtats.bts.gov//PREZIP/On_Time_On_Time_Performance_2016_1.zip"
