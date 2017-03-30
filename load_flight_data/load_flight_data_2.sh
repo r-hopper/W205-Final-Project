@@ -44,6 +44,9 @@ hdfs dfs -put $NEW_FILE1 /user/w205/final_project/flight_data/2016_1
 
 # Remove from staging directory to free up memory
 rm /home/w205/staging/on_time_2016_1.csv
+rm /home/w205/staging/On_Time_On_Time_Performance_2016_1.csv
+rm /home/w205/staging/On_Time_On_Time_Performance_2016_1.zip
+rm /hom/w205/staging/readme.html
 
 # Change to staging directory
 cd ~/staging/final_project
@@ -66,6 +69,9 @@ hdfs dfs -put $NEW_FILE2 /user/w205/final_project/flight_data/2016_2
 
 # Remove from staging directory to free up memory
 rm /home/w205/staging/on_time_2016_2.csv
+rm /home/w205/staging/On_Time_On_Time_Performance_2016_2.csv
+rm /home/w205/staging/On_Time_On_Time_Performance_2016_2.zip
+rm /hom/w205/staging/readme.html
 
 # Change to staging directory
 cd ~/staging/final_project
@@ -107,6 +113,9 @@ hdfs dfs -put $NEW_FILE3 /user/w205/final_project/flight_data/2016_3
 
 # Remove from staging directory to free up memory
 rm /home/w205/staging/on_time_2016_3.csv
+rm /home/w205/staging/On_Time_On_Time_Performance_2016_3.csv
+rm /home/w205/staging/On_Time_On_Time_Performance_2016_3.zip
+rm /hom/w205/staging/readme.html
 
 # Change directory back to original
 cd $MY_PWD
