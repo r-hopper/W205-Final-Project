@@ -1,8 +1,7 @@
-# Load all data from 2016
-
-
 #!/bin/bash
 
+
+# Load flight data from 2016
 
 ##############################
 # Name files transtats.bts.gov

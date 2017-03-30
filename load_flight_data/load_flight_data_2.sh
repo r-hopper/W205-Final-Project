@@ -15,7 +15,8 @@ hdfs dfs -mkdir /user/w205/final_project
 hdfs dfs -mkdir /user/w205/final_project/flight_data
 
 echo "This script is about to run another script."
-sh ./load_2016.sh
+#!/bin/bash
+load_2016.sh
 echo "This script has just run another script."
 
 # Change directory back to original
