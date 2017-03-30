@@ -1,7 +1,9 @@
 #!/bin/bash
 
-
 # Load flight data from 2016
+
+# Change to staging directory
+cd ~/staging/final_project
 
 ##############################
 # Name files transtats.bts.gov
