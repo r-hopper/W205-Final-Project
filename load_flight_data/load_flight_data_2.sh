@@ -39,7 +39,7 @@ hdfs dfs -put $NEW_FILE /user/w205/final_project/flight_data/2016_1
 rm /home/w205/staging/final_project/on_time_2016_1.csv
 rm /home/w205/staging/final_project/On_Time_On_Time_Performance_2016_1.csv
 rm /home/w205/staging/final_project/On_Time_On_Time_Performance_2016_1.zip
-rm /hom/w205/staging/final_project/readme.html
+rm /home/w205/staging/final_project/readme.html
 
 
 ##############################
@@ -67,7 +67,7 @@ hdfs dfs -put $NEW_FILE /user/w205/final_project/flight_data/2016_2
 rm /home/w205/staging/final_project/on_time_2016_2.csv
 rm /home/w205/staging/final_project/On_Time_On_Time_Performance_2016_2.csv
 rm /home/w205/staging/final_project/On_Time_On_Time_Performance_2016_2.zip
-rm /hom/w205/staging/final_project/readme.html
+rm /home/w205/staging/final_project/readme.html
 
 
 ##############################
@@ -95,7 +95,7 @@ hdfs dfs -put $NEW_FILE /user/w205/final_project/flight_data/2016_3
 rm /home/w205/staging/final_project/on_time_2016_3.csv
 rm /home/w205/staging/final_project/On_Time_On_Time_Performance_2016_3.csv
 rm /home/w205/staging/final_project/On_Time_On_Time_Performance_2016_3.zip
-rm /hom/w205/staging/final_project/readme.html
+rm /home/w205/staging/final_project/readme.html
 
 # Change directory back to original
 cd $MY_PWD
