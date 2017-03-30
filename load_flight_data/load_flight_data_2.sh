@@ -15,8 +15,7 @@ echo "This script is about to run another script."
 #!/bin/bash
 ./load_2016.sh
 
-
-echo "load_2016 finished"
+echo "External script complete."
 
 # Change directory back to original
 cd $MY_PWD
