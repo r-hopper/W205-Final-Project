@@ -7,9 +7,6 @@ MY_CWD=$(pwd)
 mkdir ~/staging
 mkdir ~/staging/final_project
 
-# Change to staging directory
-cd ~/staging/final_project
-
 # Create main hdfs directory
 hdfs dfs -mkdir /user/w205/final_project
 hdfs dfs -mkdir /user/w205/final_project/flight_data
