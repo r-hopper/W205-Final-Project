@@ -1,4 +1,4 @@
-Creating flight_data schema in Hive
+--Creating flight_data schema in Hive
 
 -- Jan 2007
 DROP TABLE IF EXISTS flights_2007_1;
