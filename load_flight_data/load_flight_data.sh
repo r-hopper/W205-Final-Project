@@ -13,7 +13,7 @@ hdfs dfs -mkdir /user/w205/final_project/flight_data
 
 echo "This script is about to run another script."
 #!/bin/bash
-./load_2016.sh
+./load_2010.sh
 
 echo "External script complete."
 
