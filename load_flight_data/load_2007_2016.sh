@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/staging/final_project
+
 # Load flight data from 2007
 
 ##############################
