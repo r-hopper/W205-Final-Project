@@ -2,9 +2,6 @@
 
 # Load flight data from 2007
 
-# Change to staging directory
-cd ~/staging/final_project
-
 ##############################
 # Name files transtats.bts.gov
 URL="https://transtats.bts.gov//PREZIP/On_Time_On_Time_Performance_2007_1.zip"
