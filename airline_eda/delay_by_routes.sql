@@ -23,7 +23,9 @@ GROUP BY year,
          month,
          origin,
          dest, 
-         concat(origin, "_", dest)
+         concat(origin, "_", dest),
+         depdelayminutes,
+         arrdelayminutes
 ;
 
 CREATE TABLE routes_working_2012_2016 AS
@@ -48,7 +50,9 @@ GROUP BY year,
          month,
          origin,
          dest, 
-         concat(origin, "_", dest)
+         concat(origin, "_", dest),
+         depdelayminutes,
+         arrdelayminutes
 ;
 
 DROP TABLE IF EXISTS routes_2007_2011;
