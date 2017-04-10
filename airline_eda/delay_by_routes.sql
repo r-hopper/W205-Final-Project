@@ -23,6 +23,7 @@ GROUP BY year,
          dest, 
          concat(origin, "_", dest)
 ;
+
 CREATE TABLE routes_working_2012_2016 AS
 SELECT year, 
        month,
