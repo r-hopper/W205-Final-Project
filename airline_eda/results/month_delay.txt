@@ -1,0 +1,81 @@
+#Average departure delay by month
+
+#2012-2016
+month   depdelay
+7       35.696637444597776
+6       34.992400307793936
+12      32.47156949053069
+8       32.44647745083702
+5       30.589665162464595
+1       30.54689634476797
+2       29.354318605924554
+3       29.248418436628892
+4       28.648356134068553
+9       27.055954212503647
+11      26.645358262928227
+10      26.039008708700152
+
+#Variation in average delays between months is not especially large
+#This goes slightly against expectation, as some months are known in general for particularly bad weather
+#and for high traveler volume
+
+
+#Worst average departure delay by month for the last 5 years
+year    month   depdelay
+2012    7       35.47551969365427
+2013    6       37.564605532024835
+2014    1       37.090441361681485
+2015    6       36.617732268426884
+2016    7       41.783291847403504
+
+#Worst average departure delay by 2 months for the last 5 years
+year    month   depdelay
+2012    7       35.47551969365427
+2012    8       31.735549532870817
+2013    6       37.564605532024835
+2013    7       35.07091812109795
+2014    1       37.090441361681485
+2014    6       34.39638299436518
+2015    6       36.617732268426884
+2015    12      34.53534569965459
+2016    7       41.783291847403504
+2016    8       38.65867586481238
+
+#Nothing especially shocking here - summer vacation and the winter holidays are the worst, with summer being a more frequent offender.
+
+#When are the worst storms? Maybe travel volume is a bigger indicator of delays than weather.
+
+
+
+#Worst average departure delays by month at JAC
+year    month   depdelay
+2012    2       40.28151260504202
+2013    12      35.02555910543131
+2014    12      34.38701923076923
+2015    12      54.23076923076923
+2016    12      59.98283261802575
+
+#It seems like JAC gets hit the worst during December.
+#Let's see how volume changes by month.
+
+#Total flights in/out of JAC per month, 2012-2016.
+month   depdelay
+7       4898
+8       4807
+6       3325
+3       3307
+1       3278
+2       3150
+9       3094
+12      2901
+5       1800
+10      1600
+4       1366
+11      1165
+
+#Highest volume of flights in summer but biggest delays in December - interesting.
+
+
+
+
+
