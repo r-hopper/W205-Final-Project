@@ -126,3 +126,13 @@ UNION ALL
   GROUP BY year, month
   ORDER BY avgdelay DESC
   LIMIT 1;
+
+--Monthly flight volume at JAC
+SELECT month, COUNT(flightnum) as numflights
+  FROM flights_2012_2016 
+  WHERE (origin IN ('JAC') OR dest IN ('JAC'))
+  GROUP BY month
+  ORDER BY numflights DESC;
+  
+  
+  --Busiest airport, 2012-2016
