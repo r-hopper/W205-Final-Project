@@ -1,6 +1,7 @@
-DROP TABLE routes_working;
+DROP TABLE IF EXISTS routes_working_2007_2011;
+DROP TABLE IF EXISTS routes_working_2012_2016;
 
-CREATE TABLE routes_working AS
+CREATE TABLE routes_working_2007_2011 AS
 SELECT year, 
        month,
        origin,
@@ -15,7 +16,29 @@ SELECT year,
        MAX(arrdelayminutes) AS maxarrdelay,
        AVG(arrdelayminutes) AS avgarrdelay,
        STDDEV_POP(arrdelayminutes) AS stdevarrdelay
-FROM flights_2016
+FROM flights_2007_2011
+GROUP BY year, 
+         month,
+         origin,
+         dest, 
+         concat(origin, "_", dest)
+;
+CREATE TABLE routes_working_2012_2016 AS
+SELECT year, 
+       month,
+       origin,
+       dest, 
+       count(*) AS numofflights,
+       concat(origin, "_", dest) AS route,
+       MIN(depdelayminutes) AS mindepdelay,
+       MAX(depdelayminutes) AS maxdepdelay,
+       AVG(depdelayminutes) AS avgdepdelay,
+       STDDEV_POP(depdelayminutes) AS stdevdepdelay,
+       MIN(arrdelayminutes) AS minarrdelay,
+       MAX(arrdelayminutes) AS maxarrdelay,
+       AVG(arrdelayminutes) AS avgarrdelay,
+       STDDEV_POP(arrdelayminutes) AS stdevarrdelay
+FROM flights_2012_2016
 GROUP BY year, 
          month,
          origin,
@@ -23,9 +46,10 @@ GROUP BY year,
          concat(origin, "_", dest)
 ;
 
+DROP TABLE routes_working_2011_2007; 
 
-DROP TABLE routes;
-CREATE TABLE routes AS 
+DROP TABLE IF EXISTS routes_2012_2016;
+CREATE TABLE routes_2012_2016 AS 
 SELECT year,
        month, 
        origin,
@@ -47,8 +71,8 @@ SELECT year,
        ELSE "N" END AS arrdelaygreaterthan30min,
        CASE WHEN avgarrdelay > 60 THEN "Y"
        ELSE "N" END AS arrdelaygreaterthan1hr
-FROM routes_working
+FROM routes_working_2012_2016
 ORDER BY avgarrdelay DESC
 ;
 
-DROP TABLE routes_working; 
+DROP TABLE routes_working_2012_2016; 
