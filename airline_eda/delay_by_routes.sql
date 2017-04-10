@@ -46,7 +46,32 @@ GROUP BY year,
          concat(origin, "_", dest)
 ;
 
-DROP TABLE routes_working_2011_2007; 
+DROP TABLE IF EXISTS routes_2007_2011;
+CREATE TABLE routes_2007_2011 AS 
+SELECT year,
+       month, 
+       origin,
+       dest, 
+       route,
+       mindepdelay,
+       maxdepdelay,
+       avgdepdelay,
+       stdevdepdelay,
+       CASE WHEN avgdepdelay > 30 THEN "Y"
+       ELSE "N" END AS depdelaygreaterthan30min,
+       CASE WHEN avgdepdelay > 60 THEN "Y"
+       ELSE "N" END AS depdelaygreaterthan1hr,
+       minarrdelay,
+       maxarrdelay,
+       avgarrdelay,
+       stdevarrdelay,
+       CASE WHEN avgarrdelay > 30 THEN "Y"
+       ELSE "N" END AS arrdelaygreaterthan30min,
+       CASE WHEN avgarrdelay > 60 THEN "Y"
+       ELSE "N" END AS arrdelaygreaterthan1hr
+FROM routes_working_2007_2011
+ORDER BY avgarrdelay DESC
+;
 
 DROP TABLE IF EXISTS routes_2012_2016;
 CREATE TABLE routes_2012_2016 AS 
@@ -75,4 +100,5 @@ FROM routes_working_2012_2016
 ORDER BY avgarrdelay DESC
 ;
 
+DROP TABLE routes_working_2007_2011; 
 DROP TABLE routes_working_2012_2016; 
