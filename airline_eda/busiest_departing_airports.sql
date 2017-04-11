@@ -21,5 +21,6 @@ SELECT airlineid,
 FROM flights_2012_2016
 WHERE airlineid IN ('10397', '13930', '11298', '11292', '12892', '14107', '12266', '12889', '11433', '13487', '11618', '14869', 
              '14771', '13204', '10721', '11057', '12478', '12953', '10821', '14747', '14100', '14679', '13232', '11278', '15304')
-ORDER BY avgdepdelay DESC
+GROUP BY airlineid, year, month, origin, dest, route, depdelayminutes, arrdelayminutes, depdelaygreaterthan30min, depdelaygreaterthan1hr,
+arrdelaygreaterthan30min, arrdelaygreaterthan1hr
 ;
