@@ -8,6 +8,7 @@ SELECT airlineid,
        origin,
        dest, 
        COUNT(*) AS numofflights,
+       CONCAT(origin, "_", dest) AS route,
        depdelayminutes,
        arrdelayminutes,
        CASE WHEN AVG(depdelayminutes) > 30 THEN "Y"
