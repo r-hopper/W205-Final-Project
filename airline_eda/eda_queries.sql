@@ -135,4 +135,4 @@ SELECT month, COUNT(flightnum) as numflights
   ORDER BY numflights DESC;
   
   
-  --Busiest airport, 2012-2016
+  --Busiest departing airports 2012-2016
