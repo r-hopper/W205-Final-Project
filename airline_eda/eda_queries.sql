@@ -137,22 +137,23 @@ SELECT month, COUNT(flightnum) as numflights
   
   --Busiest departing airports 2012-2016
   --Which of the top 25 busiest airports has the worst delays?
-SELECT id, origin, AVG(depdelayminutes) as depdelay
-  FROM busy_2007_2016
-  GROUP BY id, origin
-  ORDER BY depdelay DESC;
+SELECT originairportid, origin, AVG(depdelayminutes) as depdelay
+  FROM busy_2012_2016
+  GROUP BY originairportid, origin
+  ORDER BY depdelay DESC
+  LIMIT 25;
   
-SELECT id, origin, AVG(arrdelayminutes) as arrdelay
-  FROM busy_2007_2016
-  GROUP BY id, origin
+SELECT originairportid, origin, AVG(arrdelayminutes) as arrdelay
+  FROM busy_2012_2016
+  GROUP BY originairportid, origin
   ORDER BY arrdelay DESC;
   
  
 --For the top 25 busiest airports, which months are the worst? Which days?
 SELECT month, AVG(depdelayminutes) as depdelay
-FROM busy_2007_2016 GROUP BY month
+FROM busy_2012_2016 GROUP BY month
 ORDER BY depdelay DESC;
 
 SELECT dayofweek, AVG(depdelayminutes) as depdelay
-FROM busy_2007_2016 GROUP BY dayofweek
+FROM busy_2012_2016 GROUP BY dayofweek
 ORDER BY depdelay DESC;
