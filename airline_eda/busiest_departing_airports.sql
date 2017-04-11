@@ -21,7 +21,7 @@ SELECT originairportid,
        CASE WHEN AVG(arrdelayminutes) > 60 THEN "Y"
        ELSE "N" END AS arrdelaygreaterthan1hr
 FROM flights_2012_2016
-WHERE origin IN ('ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC', 'SFO', 'MCO'
+WHERE origin IN ('ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC', 'SFO', 'MCO',
                 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA')
 GROUP BY originairportid, destairportid, year, month, origin, dest, depdelayminutes, arrdelayminutes
 ;
