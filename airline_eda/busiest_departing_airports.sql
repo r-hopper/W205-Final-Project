@@ -2,7 +2,7 @@
 
 DROP TABLE IF EXISTS busy_2012_2016;
 CREATE TABLE busy_2012_2016 AS 
-SELECT id,
+SELECT airlineid,
        year,
        month, 
        origin,
