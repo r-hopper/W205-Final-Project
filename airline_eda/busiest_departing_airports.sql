@@ -6,6 +6,7 @@ SELECT originairportid,
        destairportid,
        year,
        month, 
+       dayofweek,
        origin,
        dest, 
        COUNT(*) AS numofflights,
@@ -23,5 +24,5 @@ SELECT originairportid,
 FROM flights_2012_2016
 WHERE origin IN ('ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC', 'SFO', 'MCO',
                 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA')
-GROUP BY originairportid, destairportid, year, month, origin, dest, depdelayminutes, arrdelayminutes
+GROUP BY originairportid, destairportid, year, month, dayofweek, origin, dest, depdelayminutes, arrdelayminutes
 ;
