@@ -43,6 +43,8 @@ do
     hdfs dfs -put $c.csv /user/w205/final_project/weather
 done
 
+hdfs dfs -put airports_stations.csv /user/w205/final_project/weather
+
 # Clean up directory
 rm Airports.zip
 
