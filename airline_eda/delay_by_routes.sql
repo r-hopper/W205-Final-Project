@@ -132,10 +132,10 @@ SELECT year,
        MAX(arrdelayminutes) AS maxarrdelay,
        AVG(arrdelayminutes) AS avgarrdelay,
        STDDEV_POP(arrdelayminutes) AS stdevarrdelay,
-       CASE WHEN depdelayminutes > 0 THEN "Y"
-       ELSE "N" END AS depdelayed,
-       CASE WHEN depdelayminutes > 0 THEN "N"
-       ELSE "Y" END AS nodepdelay
+       CASE WHEN depdelayminutes > 0 THEN "1"
+       ELSE "0" END AS depdelayed,
+       CASE WHEN depdelayminutes > 0 THEN "1"
+       ELSE "0" END AS nodepdelay
 FROM flights_2007_2016
 GROUP BY year, 
          month,
