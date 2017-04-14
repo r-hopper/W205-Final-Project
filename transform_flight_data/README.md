@@ -13,3 +13,7 @@ Run all_years.sql. This will compile all of the years into one table.
 ## Step 4
 
 Run one_to_five_years.sql, which will separate the full ten years into five-year blocks.
+
+## Step 5
+
+Run cleanup_months.sql in order to remove all of the individual month tables.
