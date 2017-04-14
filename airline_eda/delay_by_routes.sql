@@ -124,14 +124,6 @@ SELECT year,
        concat(origin, "_", dest) AS route,
        depdelayminutes,
        arrdelayminutes,
-       MIN(depdelayminutes) AS mindepdelay,
-       MAX(depdelayminutes) AS maxdepdelay,
-       AVG(depdelayminutes) AS avgdepdelay,
-       STDDEV_POP(depdelayminutes) AS stdevdepdelay,
-       MIN(arrdelayminutes) AS minarrdelay,
-       MAX(arrdelayminutes) AS maxarrdelay,
-       AVG(arrdelayminutes) AS avgarrdelay,
-       STDDEV_POP(arrdelayminutes) AS stdevarrdelay,
        CASE WHEN depdelayminutes > 0 THEN "1"
        ELSE "0" END AS depdelayed,
        CASE WHEN depdelayminutes > 0 THEN "1"
@@ -156,25 +148,27 @@ SELECT year,
        numofflights,
        depdelayminutes,
        arrdelayminutes,
-       mindepdelay,
-       maxdepdelay,
-       avgdepdelay,
-       stdevdepdelay,
        depdelayed,
        nodepdelay,
-       CASE WHEN avgdepdelay > 30 THEN "Y"
+       CASE WHEN AVG(depdelayminutes) > 30 THEN "Y"
        ELSE "N" END AS depdelaygreaterthan30min,
-       CASE WHEN avgdepdelay > 60 THEN "Y"
+       CASE WHEN AVG(depdelayminutes) > 60 THEN "Y"
        ELSE "N" END AS depdelaygreaterthan1hr,
-       minarrdelay,
-       maxarrdelay,
-       avgarrdelay,
-       stdevarrdelay,
-       CASE WHEN avgarrdelay > 30 THEN "Y"
+       CASE WHEN AVG(arrdelayminutes) > 30 THEN "Y"
        ELSE "N" END AS arrdelaygreaterthan30min,
-       CASE WHEN avgarrdelay > 60 THEN "Y"
+       CASE WHEN AVG(arrdelayminutes) > 60 THEN "Y"
        ELSE "N" END AS arrdelaygreaterthan1hr
 FROM routes_working_2007_2016
+GROUP BY year,
+       month, 
+       origin,
+       dest, 
+       route,
+       numofflights,
+       depdelayminutes,
+       arrdelayminutes,
+       depdelayed,
+       nodepdelay
 ;
 
 
