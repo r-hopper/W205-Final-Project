@@ -167,6 +167,7 @@ ORDER BY flightsperyear DESC LIMIT 25;
 
 
 --Airports with Highest Percentage of Delayed Flights (threshold for min number of flights)
+SELECT origin, SUM(numofflights)/10 as flightsperyear, 
 
 
 --Airports with Highest Percentage of Long Delayed Flights (threshold for min number of flights)
