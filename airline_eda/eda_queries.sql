@@ -157,3 +157,16 @@ ORDER BY depdelay DESC;
 SELECT dayofweek, AVG(depdelayminutes) as depdelay
 FROM busy_2012_2016 GROUP BY dayofweek
 ORDER BY depdelay DESC;
+
+
+--Max, min, avg number of flights per year
+SELECT origin, year, COUNT(flightnum) as numflights
+FROM flights_2007_2016
+GROUP BY origin, year, flightnum
+ORDER BY numflights DESC
+LIMIT 25;
+
+--Airports with Highest Percentage of Delayed Flights (threshold for min number of flights)
+
+
+--Airports with Highest Percentage of Long Delayed Flights (threshold for min number of flights)
