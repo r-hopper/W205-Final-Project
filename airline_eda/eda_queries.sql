@@ -160,11 +160,10 @@ ORDER BY depdelay DESC;
 
 
 --Max, min, avg number of flights per year
-SELECT origin, year, COUNT(flightnum) as numflights
-FROM flights_2007_2016
-GROUP BY origin, year, flightnum
-ORDER BY numflights DESC
-LIMIT 25;
+SELECT origin, year, MIN(numofflights) as minflights, MAX(numofflights) as maxflights, AVG(numofflights) as avgflights
+FROM routes_2007_2016
+GROUP BY origin, year, numofflights
+ORDER BY numofflights DESC;
 
 --Airports with Highest Percentage of Delayed Flights (threshold for min number of flights)
 
