@@ -20,7 +20,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2007';
+'/user/w205/final_project/weather/2007';
 
 -- 2008
 DROP TABLE IF EXISTS weather_2008;
@@ -42,7 +42,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2008';
+'/user/w205/final_project/weather/2008';
 
 -- 2009
 DROP TABLE IF EXISTS weather_2009;
@@ -64,7 +64,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2009';
+'/user/w205/final_project/weather/2009';
 
 -- 2010
 DROP TABLE IF EXISTS weather_2010;
@@ -86,7 +86,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2010';
+'/user/w205/final_project/weather/2010';
 
 -- 2011
 DROP TABLE IF EXISTS weather_2011;
@@ -108,7 +108,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2011';
+'/user/w205/final_project/weather/2011';
 
 -- 2012
 DROP TABLE IF EXISTS weather_2012;
@@ -130,7 +130,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2012';
+'/user/w205/final_project/weather/2012';
 
 -- 2013
 DROP TABLE IF EXISTS weather_2013;
@@ -152,7 +152,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2013';
+'/user/w205/final_project/weather/2013';
 
 -- 2014
 DROP TABLE IF EXISTS weather_2014;
@@ -174,7 +174,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2014';
+'/user/w205/final_project/weather/2014';
 
 -- 2015
 DROP TABLE IF EXISTS weather_2015;
@@ -196,7 +196,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2015';
+'/user/w205/final_project/weather/2015';
 
 -- 2016
 DROP TABLE IF EXISTS weather_2016;
@@ -218,7 +218,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2016';
+'/user/w205/final_project/weather/2016';
 
 -- 2017
 DROP TABLE IF EXISTS weather_2017;
@@ -240,7 +240,7 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/2017';
+'/user/w205/final_project/weather/2017';
 
 -- Creating for airports and weather stations table
 DROP TABLE IF EXISTS airports_stations;
@@ -263,4 +263,6 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather_data/airports_stations';
+'/user/w205/final_project/weather/airports_stations';
+
+

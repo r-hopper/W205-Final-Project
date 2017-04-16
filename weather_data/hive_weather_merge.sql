@@ -42,5 +42,7 @@ DROP TABLE IF EXISTS precip;
 CREATE TABLE precip AS
 SELECT AIRPORT, weather_all.station_id, date_yyyymmdd, weather_type, magnitude
 FROM weather_all, airports_stations
-WHERE weather_type = PRCP or weather_type = SNWD or weather_type = SNOW
+WHERE weather_type = 'PRCP' or weather_type = 'SNWD' or weather_type = 'SNOW'
 and weather_all.station_id = airports_stations.station_id;
+
+

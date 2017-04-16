@@ -40,10 +40,10 @@ hdfs dfs -put airports.csv /user/w205/final_project/weather
 hdfs dfs -put weather_stations.txt /user/w205/final_project/weather
 for (( c=$start_year; c<=$cur_year; c++))
 do
-    hdfs dfs -put $c.csv /user/w205/final_project/weather
+    hdfs dfs -put $c.csv /user/w205/final_project/weather/$c
 done
 
-hdfs dfs -put airports_stations.csv /user/w205/final_project/weather
+hdfs dfs -put airports_stations.csv /user/w205/final_project/weather/airport_stations
 
 # Clean up directory
 rm Airports.zip
@@ -116,3 +116,5 @@ rm Airports.zip
 # gunzip 2015.csv.gz
 # gunzip 2016.csv.gz
 # gunzip 2017.csv.gz
+
+
