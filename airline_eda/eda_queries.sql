@@ -160,14 +160,19 @@ ORDER BY depdelay DESC;
 
 
 --Max, min, avg number of flights per year
-SELECT DISTINCT origin, SUM(numofflights)/10 as flightsperyear
+--363 distinct origins
+SELECT origin, SUM(numofflights)/10 as flightsperyear
 FROM routes_2007_2016
 GROUP BY origin
-ORDER BY flightsperyear DESC LIMIT 25;
+ORDER BY flightsperyear ASC LIMIT 120;
 
 
 --Airports with Highest Percentage of Delayed Flights (threshold for min number of flights)
-SELECT origin, SUM(numofflights)/10 as flightsperyear, 
+--Airports with >2 flights per day -- eliminates 33% of distinct origins
+SELECT origin, SUM(depdelayed)/SUM(numofflights) as delayprop, SUM(numofflights)/10 as flightsperyear
+FROM routes_2007_2016
+GROUP BY origin
+ORDER BY delayprop DESC LIMIT 25;
 
 
 --Airports with Highest Percentage of Long Delayed Flights (threshold for min number of flights)
