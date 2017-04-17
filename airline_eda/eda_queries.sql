@@ -177,9 +177,8 @@ ORDER BY delayprop DESC LIMIT 25;
 
 
 --Airports with Highest Percentage of Long Delayed Flights (threshold for min number of flights)
-SELECT origin, SUM(depdelayed)/SUM(numofflights) as delayprop, SUM(numofflights)/10 as flightsperyear
-FROM routes_2007_2016
-WHERE depdelaygreaterthan1hr IN ('Y')
+SELECT origin, SUM(longdelay)/SUM(numofflights) as delayprop, SUM(numofflights)/10 as flightsperyear
+FROM routes_2007_2016_del
 GROUP BY origin
 HAVING (SUM(numofflights)/10 > 985)
 ORDER BY delayprop DESC LIMIT 25;
