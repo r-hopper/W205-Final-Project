@@ -172,6 +172,39 @@ GROUP BY year,
 ;
 
 
+
+DROP TABLE IF EXISTS routes_2007_2016_del;
+CREATE TABLE routes_2007_2016_del AS 
+SELECT year,
+       month, 
+       origin,
+       dest, 
+       route,
+       numofflights,
+       depdelayminutes,
+       arrdelayminutes,
+       depdelayed,
+       nodepdelay,
+       CASE WHEN depdelaygreaterthan1hr=="Y" THEN "1"
+       ELSE "0" END AS longdelay
+FROM routes_2007_2016
+GROUP BY year,
+       month, 
+       origin,
+       dest, 
+       route,
+       numofflights,
+       depdelayminutes,
+       arrdelayminutes,
+       depdelayed,
+       nodepdelay,
+       depdelaygreaterthan30min,
+       depdelaygreaterthan1hr,
+       arrdelaygreaterthan30min,
+       arrdelaygreaterthan1hr
+;
+
+
 DROP TABLE routes_working_2007_2011; 
 DROP TABLE routes_working_2012_2016; 
 DROP TABLE routes_working_2007_2016; 
