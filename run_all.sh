@@ -8,7 +8,7 @@ cd load_flight_data
 
 ./load_flight_data.sh
 
-cd ..
+cd $MY_CWD
 
 #Transform flight data
 cd transform_flight_data
@@ -33,7 +33,7 @@ hive -f cleanup_months.sql
 
 echo "Flight Data Transformed"
 
-cd ..
+cd $MY_CWD
 
 # Load Weather Data
 
@@ -50,4 +50,5 @@ hive -f hive_weather_merge.sql
 
 echo "Weather Data Transformed"
 
+cd $MY_CWD
 

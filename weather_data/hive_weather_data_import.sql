@@ -245,15 +245,11 @@ LOCATION
 -- Creating for airports and weather stations table
 DROP TABLE IF EXISTS airports_stations;
 CREATE EXTERNAL TABLE airports_stations (
-    AIRPORT_SEQ_ID string,
+    index_no string,
     AIRPORT_ID string,
     AIRPORT string,
-    AIRPORT_COUNTRY_CODE_ISO string,
-    AIRPORT_STATE_CODE string,
-    LATITUDE string,
-    LONGITUDE string,
-    distance string,
-    station_id string)
+    station_id string,
+    distance string)
 ROW FORMAT SERDE
     'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES(
@@ -263,6 +259,6 @@ WITH SERDEPROPERTIES(
 )
 STORED AS TEXTFILE
 LOCATION
-'/user/w205/final_project/weather/airports_stations';
+'/user/w205/final_project/weather/airport_stations';
 
 
