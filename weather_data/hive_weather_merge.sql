@@ -43,5 +43,5 @@ CREATE TABLE precip AS
 SELECT AIRPORT, weather_all.station_id, date_yyyymmdd, weather_type, magnitude
 FROM weather_all
 INNER JOIN airports_stations on weather_all.station_id = airports_stations.station_id
-WHERE (weather_type = 'PRCP' or weather_type = 'SNWD' or weather_type = 'SNOW') and magnitude > 0;
+WHERE (weather_type = 'PRCP' or weather_type = 'SNOW') and magnitude > 0;
 
