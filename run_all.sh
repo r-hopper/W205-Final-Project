@@ -16,7 +16,7 @@ cd transform_flight_data
 # Load data into Hive
 hive -f load_2007_2016.sql
 
-chmod 400 u+x,g+x flight_data_HDFS_cleanup.sh
+chmod u+x,g+x flight_data_HDFS_cleanup.sh
 ./flight_data_HDFS_cleanup.sh
 
 echo "Flight Data Loaded"
@@ -39,7 +39,7 @@ cd ..
 
 cd weather_data
 
-chmod 400 u+x,g+x load_weather_data.sh
+chmod u+x,g+x load_weather_data.sh
 ./load_weather_data.sh
 
 echo "Weather Data Loaded"
