@@ -1,5 +1,6 @@
-carrier,"100,268,055"
-weather,"13,948,948"
-nas,"75,281,616"
-security,"404,963"
-lateaircraft,"131,769,900"
+delay_cause,total_minutes
+carrier,100268055
+weather,13948948
+nas,75281616
+security,404963
+lateaircraft,131769900
