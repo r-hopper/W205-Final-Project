@@ -1,7 +1,10 @@
-carrierdelay_total_minutes,weatherdelay_total_minutes,nasdelay_total_minutes,securitydelay_total_minutes,lateaircraftdelay_total_minutes
-" 100,268,055 "," 13,948,948 "," 75,281,616 "," 404,963 "," 131,769,900 "
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
+carrier," 100,268,055 ",,,,
+weather," 13,948,948 ",,,,
+nas," 75,281,616 ",,,,
+security," 404,963 ",,,,
+lateaircraft," 131,769,900 ",,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
