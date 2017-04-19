@@ -16,5 +16,5 @@ SELECT
       origin,
       dayofweek,
       (depdelayminutes_total+arrdelayminutes_total)/flights_total AS delay_ratio
-FROM flights_2012_2016
+FROM delay_dayofweek
 ;
