@@ -19,3 +19,9 @@ FROM top100_routes_2007_2016_del
 GROUP BY origin
 HAVING (SUM(numofflights)/10 > 985)
 ORDER BY delayprop DESC LIMIT 25' > highest_long_delay_prop.tsv
+
+cd ..
+mv airline_eda/dep_delay_route.tsv flight_app/final_csv/dep_delay_route.tsv
+mv airline_eda/arr_delay_route.tsv flight_app/final_csv/arr_delay_route.tsv
+mv airline_eda/highest_delay_prop.tsv flight_app/final_csv/highest_delay_prop.tsv
+mv airline_eda/highest_long_delay_prop.tsv flight_app/final_csv/highest_long_delay_prop.tsv
