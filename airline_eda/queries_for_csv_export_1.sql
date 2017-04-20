@@ -1,5 +1,5 @@
 --Longest departure delay by route
-SELECT route, AVG(depdelayminutes) as avgdepdelay FROM routes_2007_2016 GROUP BY route
+SELECT route, AVG(depdelayminutes) as avgdepdelay, year FROM routes_2007_2016 GROUP BY route
 ORDER BY avgdepdelay DESC LIMIT 25;
 
 --Longest arrival delay by route
