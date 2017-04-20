@@ -94,6 +94,21 @@ for index, airport in airports_active_us.iterrows():
 #print airport['AIRPORT'], airport['distance'], airport['station_id']
 #print airports_active_us['station_id'].head(10)
 
+# Modify some stations because of incomplete weather data
+output_table.loc[output_table.AIRPORT == 'BWI' , "station_id"] = 'USC00181125'
+output_table.loc[output_table.AIRPORT == 'DCA' , "station_id"] = 'USW00013743'
+output_table.loc[output_table.AIRPORT == 'DEN' , "station_id"] = 'USW00003017'
+output_table.loc[output_table.AIRPORT == 'MSP' , "station_id"] = 'USW00014922'
+output_table.loc[output_table.AIRPORT == 'PHL' , "station_id"] = 'USW00013739'
+output_table.loc[output_table.AIRPORT == 'SLC' , "station_id"] = 'USC00427606'
+
+output_table.loc[output_table.AIRPORT == 'BWI' , "distance"] = '999'
+output_table.loc[output_table.AIRPORT == 'DCA' , "distance"] = '999'
+output_table.loc[output_table.AIRPORT == 'DEN' , "distance"] = '999'
+output_table.loc[output_table.AIRPORT == 'MSP' , "distance"] = '999'
+output_table.loc[output_table.AIRPORT == 'PHL' , "distance"] = '999'
+output_table.loc[output_table.AIRPORT == 'SLC' , "distance"] = '999'
+
 output_table.to_csv('airports_stations.csv')
 
 
