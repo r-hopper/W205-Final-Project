@@ -1,5 +1,2 @@
-hive -e 'select * from origin_delay_cause' > /home/w205/W205-Final-Project/airline_eda/results/origin_delay_cause.tsv
-hive -e 'select * from origin_delay_cause_max' > /home/w205/W205-Final-Project/airline_eda/results/origin_delay_cause_max.tsv
-hive -e 'select * from delay_cause_total' > /home/w205/W205-Final-Project/airline_eda/results/delay_cause_total.tsv
-hive -e 'select * from delay_cause_total_year' > /home/w205/W205-Final-Project/airline_eda/results/delay_cause_total_year.tsv
-hive -e 'select * from worst_dayofweek' > /home/w205/W205-Final-Project/airline_eda/results/worst_dayofweek.tsv
+hive -e 'set hive.cli.print.header=true; select * from worst_dayofweek_final' | sed 's/[\t]/,/g'  > /home/w205/W205-Final-Project/exporting_query_results/worst_dayofweek_final.csv
+hive -e 'set hive.cli.print.header=true; select * from origin_most_frequent_delay_cause' | sed 's/[\t]/,/g'  > /home/w205/W205-Final-Project/exporting_query_results/origin_most_frequent_delay_cause.csv

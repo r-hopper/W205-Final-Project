@@ -13,7 +13,7 @@ SELECT
       SUM(depdelayminutes) AS depdelayminutes_total,
       SUM(arrdelayminutes) AS arrdelayminutes_total,
       COUNT(*) as flights_total
-FROM flights_2012_2016
+FROM flights_2007_2016
 GROUP BY origin
 ;
 
@@ -57,4 +57,18 @@ SELECT
       SUM(lateaircraftdelay) AS lateaircraftdelay_total
 FROM flights_2007_2016
 GROUP BY year
+;
+
+DROP TABLE IF EXISTS origin_most_frequent_delay_cause;
+CREATE TABLE origin_most_frequent_delay_cause AS
+SELECT
+      origin,
+      CASE WHEN carrierdelay_greatest+weatherdelay_greatest+nasdelay_greatest+securitydelay_greatest+lateaircraftdelay_greatest <> 1 THEN "multiple"
+            WHEN carrierdelay_greatest = 1 THEN "carrier_delay"
+            WHEN weatherdelay_greatest = 1 THEN "weather_delay"
+            WHEN nasdelay_greatest = 1 THEN "national_air_system_delay"
+            WHEN securitydelay_greatest = 1 THEN "security_delay"
+            WHEN lateaircraftdelay_greatest = 1 THEN "late_arriving_aircraft_delay"
+            END AS most_frequent_delay_cause
+FROM origin_delay_cause_max
 ;
