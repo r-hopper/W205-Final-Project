@@ -1,3 +1,7 @@
+--Top 100 busiest airports
+SELECT route, SUM(numofflights) as flightvol FROM routes_2007_2016
+GROUP BY route ORDER BY flightvol DESC LIMIT 100;
+
 --Longest departure delay by route
 SELECT route, avgdepdelay FROM routes_2007_2011 GROUP BY route, avgdepdelay ORDER BY avgdepdelay DESC LIMIT 20;
 
