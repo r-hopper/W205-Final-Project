@@ -88,6 +88,36 @@ GROUP BY year,
        arrdelaygreaterthan1hr
 ;
 
-DROP TABLE routes_working_2007_2016; 
+DROP TABLE IF EXISTS top100_routes_2007_2016_del;
+CREATE TABLE top100_routes_2007_2016_del AS 
+SELECT year,
+       month, 
+       origin,
+       dest, 
+       route,
+       numofflights,
+       depdelayminutes,
+       arrdelayminutes,
+       depdelayed,
+       nodepdelay,
+       longdelay
+FROM routes_2007_2016_del
+WHERE origin IN ('ATL','ORD','DFW','DEN','LAX','PHX','IAH','SFO','LAS','DTW','MSP','CLT','MCO','EWR','SLC','BOS','SEA','JFK',
+'LGA','BWI','MDW','PHL','SAN','DCA','MIA','TPA','FLL','IAD','STL','BNA','HOU','PDX','HNL','DAL','OAK','CLE','MCI','MEM','RDU',
+'CVG','SMF','SJC','AUS','SNA','MSY','SAT','MKE','PIT','IND','ABQ','CMH','RSW','JAX','BUR','ONT','PBI','SJU','BDL','BUF','OMA',
+'OGG','OKC','TUS','TUL','RNO','ELP','BHM','ANC','RIC','PVD','SDF','LIT','ORF','CHS','BOI','LGB','DSM','KOA','GRR','LIH','DAY','MHT','XNA',
+'GEG','COS','FAT','TYS','PSP','ROC','ICT','ALB','MSN','SAV','SBA','JAN','GSO','GSP','HPN','PNS','SYR')
+GROUP BY year,
+       month, 
+       origin,
+       dest, 
+       route,
+       numofflights,
+       depdelayminutes,
+       arrdelayminutes,
+       depdelayed,
+       nodepdelay,
+       longdelay
+;
 
---Top 100 airports by volume
+DROP TABLE routes_working_2007_2016; 
