@@ -1,24 +1,69 @@
---Longest departure delay by route
-SELECT route, AVG(depdelayminutes) as avgdepdelay, year FROM routes_2007_2016 GROUP BY route, year
-ORDER BY avgdepdelay DESC LIMIT 25;
+--Longest departure delay by route per year
+SELECT a16.route, AVG(a07.depdelayminutes) as avgdepdelay7, AVG(a08.depdelayminutes) as avgdepdelay8, 
+AVG(a09.depdelayminutes) as avgdepdelay9, AVG(a10.depdelayminutes) as avgdepdelay10, AVG(a11.depdelayminutes) as avgdepdelay11, 
+AVG(a12.depdelayminutes) as avgdepdelay12, AVG(a13.depdelayminutes) as avgdepdelay13, AVG(a14.depdelayminutes) as avgdepdelay14, 
+AVG(a15.depdelayminutes) as avgdepdelay15, AVG(a16.depdelayminutes) as avgdepdelay16
+FROM routes_2007 a07
+inner join routes_2008 a08
+on a07.route = a08.route
+inner join routes_2009 a09
+on a08.route = a09.route
+inner join routes_2010 a10
+on a09.route = a10.route
+inner join routes_2011 a11
+on a10.route = a11.route
+inner join routes_2012 a12
+on a11.route = a12.route
+inner join routes_2013 a13
+on a12.route = a13.route
+inner join routes_2014 a14
+on a13.route = a14.route
+inner join routes_2015 a15
+on a14.route = a15.route
+inner join routes_2016 a16
+on a15.route = a16.route
+GROUP BY a16.route
+ORDER BY avgdepdelay16 DESC
+LIMIT 25;
 
-select a07.OriginAirportID, a16.Origin, a07.RS, a08.RS, a09.RS, a10.RS, a11.RS, a12.RS, a13.RS, a14.RS, a15.RS, a16.RS 
-from busy_dep_airport_2007 a07
-inner join busy_dep_airport_2008 a08
-on a07.OriginAirportID = a08.OriginAirportID
-inner join busy_dep_airport_2009 a09
-on a08.OriginAirportID = a09.OriginAirportID
-inner join busy_dep_airport_2010 a10
-on a09.OriginAirportID = a10.OriginAirportID
-inner join busy_dep_airport_2011 a11
-on a10.OriginAirportID = a11.OriginAirportID
-inner join busy_dep_airport_2012 a12
-on a11.OriginAirportID = a12.OriginAirportID
-inner join busy_dep_airport_2013 a13
-on a12.OriginAirportID = a13.OriginAirportID
-inner join busy_dep_airport_2014 a14
-on a13.OriginAirportID = a14.OriginAirportID
-inner join busy_dep_airport_2015 a15
-on a14.OriginAirportID = a15.OriginAirportID
-inner join busy_dep_airport_2016 a16
-on a15.OriginAirportID = a16.OriginAirportID;
+SELECT a16.route, AVG(a14.depdelayminutes) as avgdepdelay14, 
+AVG(a15.depdelayminutes) as avgdepdelay15, AVG(a16.depdelayminutes) as avgdepdelay16
+FROM routes_2014 a14
+inner join routes_2015 a15
+on a14.route = a15.route
+inner join routes_2016 a16
+on a15.route = a16.route
+GROUP BY a16.route
+ORDER BY avgdepdelay16 DESC
+LIMIT 25;
+
+
+
+
+--Longest arrival delay by route
+SELECT a16.route, AVG(a07.arrdelayminutes) as avgarrdelay7, AVG(a08.arrdelayminutes) as avgarrdelay8, 
+AVG(a09.arrdelayminutes) as avgarrdelay9, AVG(a10.arrdelayminutes) as avgarrdelay10, AVG(a11.arrdelayminutes) as avgarrdelay11, 
+AVG(a12.arrdelayminutes) as avgarrdelay12, AVG(a13.arrdelayminutes) as avgarrdelay13, AVG(a14.arrdelayminutes) as avgarrdelay14, 
+AVG(a15.arrdelayminutes) as avgarrdelay15, AVG(a16.arrdelayminutes) as avgarrdelay16
+FROM routes_2007 a07
+inner join routes_2008 a08
+on a07.route = a08.route
+inner join routes_2009 a09
+on a08.route = a09.route
+inner join routes_2010 a10
+on a09.route = a10.route
+inner join routes_2011 a11
+on a10.route = a11.route
+inner join routes_2012 a12
+on a11.route = a12.route
+inner join routes_2013 a13
+on a12.route = a13.route
+inner join routes_2014 a14
+on a13.route = a14.route
+inner join routes_2015 a15
+on a14.route = a15.route
+inner join routes_2016 a16
+on a15.route = a16.route
+GROUP BY a16.route
+ORDER BY avgarrdelay16 DESC
+LIMIT 25;
