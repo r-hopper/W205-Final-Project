@@ -16,8 +16,6 @@ drop table if exists precip_days_ann;
 create table precip_days_ann as
 SELECT AIRPORT, cast((count(distinct date_yyyymmdd)) / 10.25 as int) as ann_days
 from precip
-where airport in ('ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC',
-    'SFO', 'MCO', 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA')
 group by AIRPORT
 order by ann_days desc;
 
@@ -81,5 +79,4 @@ order by total_snow desc;
 -- 25 busiest US airports
 -- 'ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC',
 -- 'SFO', 'MCO', 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA'
-
 
