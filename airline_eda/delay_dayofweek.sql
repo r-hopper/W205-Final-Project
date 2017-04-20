@@ -1,3 +1,4 @@
+--Finding total delayed flights and minutes per weekday per origin airport from 2007 - 2016
 DROP TABLE IF EXISTS delay_dayofweek;
 CREATE TABLE delay_dayofweek AS
 SELECT
@@ -10,6 +11,7 @@ FROM flights_2007_2016
 GROUP BY origin, dayofweek
 ;
 
+--Calculating ratio of delayed minutes / flights
 DROP TABLE IF EXISTS worst_dayofweek;
 CREATE TABLE worst_dayofweek AS
 SELECT
@@ -19,6 +21,7 @@ SELECT
 FROM delay_dayofweek
 ;
 
+--Identifying day of the week with the highest ratio for each origin airport
 DROP TABLE IF EXISTS worst_dayofweek_final;
 CREATE TABLE worst_dayofweek_final AS
 SELECT

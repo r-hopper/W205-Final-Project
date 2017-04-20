@@ -1,4 +1,4 @@
-
+--Finding total delayed flights and minutes per cause per origin airport from 2007 - 2016
 DROP TABLE IF EXISTS origin_delay_cause;
 CREATE TABLE origin_delay_cause AS
 SELECT
@@ -17,6 +17,7 @@ FROM flights_2007_2016
 GROUP BY origin
 ;
 
+--Identifying delay cause with the highest total minutes per origin airport
 DROP TABLE IF EXISTS origin_delay_cause_max;
 CREATE TABLE origin_delay_cause_max AS
 SELECT
@@ -35,30 +36,21 @@ FROM origin_delay_cause
 GROUP BY origin, carrierdelay_total, weatherdelay_total, nasdelay_total, securitydelay_total, lateaircraftdelay_total
 ;
 
-DROP TABLE IF EXISTS delay_cause_total;
-CREATE TABLE delay_cause_total AS
-SELECT
-      SUM(carrierdelay_total) AS carrierdelay_total,
-      SUM(weatherdelay_total) AS weatherdelay_total,
-      SUM(nasdelay_total) AS nasdelay_total,
-      SUM(securitydelay_total) AS securitydelay_total,
-      SUM(lateaircraftdelay_total) AS lateaircraftdelay_total
-FROM origin_delay_cause
-;
-
+--Finding total delay minutes per cause per year from 2007 - 2016
 DROP TABLE IF EXISTS delay_cause_total_year;
 CREATE TABLE delay_cause_total_year AS
 SELECT
       year,
-      SUM(carrierdelay) AS carrierdelay_total,
-      SUM(weatherdelay) AS weatherdelay_total,
-      SUM(nasdelay) AS nasdelay_total,
-      SUM(securitydelay) AS securitydelay_total,
-      SUM(lateaircraftdelay) AS lateaircraftdelay_total
+      CAST(SUM(carrierdelay) AS DECIMAL) AS carrierdelay_total,
+      CAST(SUM(weatherdelay) AS DECIMAL)AS weatherdelay_total,
+      CAST(SUM(nasdelay) AS DECIMAL) AS nasdelay_total,
+      CAST(SUM(securitydelay) AS DECIMAL) AS securitydelay_total,
+      CAST(SUM(lateaircraftdelay) AS DECIMAL) AS lateaircraftdelay_total
 FROM flights_2007_2016
 GROUP BY year
 ;
 
+--Formatting most frequent delay cause per origin
 DROP TABLE IF EXISTS origin_most_frequent_delay_cause;
 CREATE TABLE origin_most_frequent_delay_cause AS
 SELECT
