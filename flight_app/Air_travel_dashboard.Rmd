@@ -95,7 +95,7 @@ Column
 -----------------------------------------------------------------------
 ### Annual Days with Precipitation
 ```{r}
-precip_days <- read.table("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q1_precip_days_ann.tsv", sep = '\t', header = FALSE)
+precip_days <- read.table("final_csv/Q1_precip_days_ann.tsv", sep = '\t', header = FALSE)
 colnames(precip_days) <- c("Origin", "Annual_days")
 precip_airports <- merge(precip_days, usairports, by.x=c("Origin"), by.y=c("IATA_FAA"))
 airportmap_precip <- ggmap(usmap) + geom_point(aes(x = long, y=lat, size=Annual_days, color = Origin), data=precip_airports, alpha = 1.0) +
@@ -106,7 +106,7 @@ Column {data-width=500}
 -----------------------------------------------------------------------
 ### Likelihood of Weather Delays
 ```{r}
-likelihood_monthly <- read.table("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q2_likelihood_month.tsv", sep = '\t', header = FALSE)
+likelihood_monthly <- read.table("final_csv/Q2_likelihood_month.tsv", sep = '\t', header = FALSE)
 colnames(likelihood_monthly) <- c("Origin", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 likelihood_melt <- melt(likelihood_monthly, id="Origin", value.name = "value", variable.name = "Month")
 likelihood <- ggplot(data=likelihood_melt, aes(x=Month, y=value, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Month", y= "Percentage of Flights Delayed by Weather") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
@@ -115,7 +115,7 @@ ggplotly(likelihood)
 ```
 ### Likelihood of Delay due to Depth of Precipitation
 ```{r}
-likelihood_depth <- read.table("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q3_lilkelihood_based_on_depth.tsv", sep = '\t', header = FALSE)
+likelihood_depth <- read.table("final_csv/Q3_lilkelihood_based_on_depth.tsv", sep = '\t', header = FALSE)
 colnames(likelihood_depth) <- c("Origin", "0 in", "1/4 in", "1/2 in", "1 in", "1.5 in", "2 in", "3 in", "4 in")
 likelihood_depth_melt <- melt(likelihood_depth, id = "Origin", value.name = "likelihood", variable.name = "depth")
 likelihood_D <- ggplot(data=likelihood_depth_melt, aes(x=depth, y=likelihood, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Depth of Rainfall", y= "Likelihood of Delay") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
