@@ -23,7 +23,7 @@ HAVING (SUM(numofflights)/10 > 985)
 ORDER BY delayprop DESC LIMIT 25' | sed 's/[\t]/,/g' > highest_long_delay_prop.csv
 
 cd ..
-mv airline_eda/dep_delay_route.tsv flight_app/final_csv/dep_delay_route.csv
-mv airline_eda/arr_delay_route.tsv flight_app/final_csv/arr_delay_route.csv
-mv airline_eda/highest_delay_prop.tsv flight_app/final_csv/highest_delay_prop.csv
-mv airline_eda/highest_long_delay_prop.tsv flight_app/final_csv/highest_long_delay_prop.csv
+mv airline_eda/dep_delay_route.csv flight_app/final_csv/dep_delay_route.csv
+mv airline_eda/arr_delay_route.csv flight_app/final_csv/arr_delay_route.csv
+mv airline_eda/highest_delay_prop.csv flight_app/final_csv/highest_delay_prop.csv
+mv airline_eda/highest_long_delay_prop.csv flight_app/final_csv/highest_long_delay_prop.csv
