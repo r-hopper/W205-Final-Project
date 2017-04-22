@@ -8,12 +8,13 @@ hive -f Q2_likelihood_month.sql
 hive -f Q3_likelihood_based_on_depth.sql
 
 # Export metric query results to tsv files for use in R dashboard
-hive -e 'select * from Q1_precip_days' > Q1_precip_days_ann.tsv
-hive -e 'select * from likelihood_monthly_pivot' > Q2_likelihood_month.tsv
-hive -e 'select * from delay_depth' > Q3_likelihood_based_on_depth.tsv
+hive -e 'set hive.cli.print.header=true; select * from Q1_precip_days' | sed 's/[\t]/,/g' > Q1_precip_days_ann.csv
+hive -e 'set hive.cli.print.header=true; select * from likelihood_monthly_pivot' | sed 's/[\t]/,/g' > Q2_likelihood_month.csv
+hive -e 'set hive.cli.print.header=true; select * from delay_depth' | sed 's/[\t]/,/g' > Q3_likelihood_based_on_depth.csv
 
 # Move files to appropriate location
 cd ..
-mv weather_investigation/Q1_precip_days_ann.tsv flight_app/final_csv/Q1_precip_days_ann.tsv
-mv weather_investigation/Q2_likelihood_month.tsv flight_app/final_csv/Q2_likelihood_month.tsv
-mv weather_investigation/Q3_likelihood_based_on_depth.tsv flight_app/final_csv/Q3_likelihood_based_on_depth.tsv
+mv weather_investigation/Q1_precip_days_ann.csv flight_app/final_csv/Q1_precip_days_ann.csv
+mv weather_investigation/Q2_likelihood_month.csv flight_app/final_csv/Q2_likelihood_month.csv
+mv weather_investigation/Q3_likelihood_based_on_depth.csv flight_app/final_csv/Q3_likelihood_based_on_depth.csv
+

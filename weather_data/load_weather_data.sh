@@ -7,7 +7,7 @@ cd ~/staging/final_project
 # Load weather data from 1997, weather stations, and airports
 ##############################
 # Get airport and weather station location files
-URL_airports="https://transtats.bts.gov/ftproot/TranStatsData/655213050_T_MASTER_CORD.zip"
+URL_airports="https://transtats.bts.gov/ftproot/TranStatsData/432147446_T_MASTER_CORD.zip"
 URL_stations="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt"
 wget --no-check-certificate "$URL_airports" -O Airports.zip
 wget --no-check-certificate "$URL_stations" -O weather_stations.txt
@@ -33,7 +33,7 @@ do
 done
 
 # Modify airports and airport/weather station file to remove headers
-OLD_FILE="655213050_T_MASTER_CORD.csv"
+OLD_FILE="432147446_T_MASTER_CORD.csv"
 NEW_FILE="airports.csv"
 tail -n +2 $OLD_FILE > $NEW_FILE
 
@@ -47,9 +47,10 @@ hdfs dfs -put airports_stations.csv /user/w205/final_project/weather/airport_sta
 
 # Clean up directory
 rm Airports.zip
-rm 655213050_T_MASTER_CORD.csv
-rm airports.csv
+rm 432147446_T_MASTER_CORD.csv
+#rm airports.csv
 rm weather_stations.txt
 rm airports_stations.csv
 
 cd $MY_CWD
+
