@@ -112,7 +112,7 @@ ggplotly(arrtimeseries)
 
 
 
-Delay 
+Delays by Origin
 =======================================================================
 
 Column {.tabset}
@@ -159,7 +159,37 @@ Column {data-width=500}
 ```{r}
 
 ```
-Airports chosen by most departure volume
+
+
+Delays by Route
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+
+### Routes with Longest Arrival Delays
+
+```{r}
+arrdelay_route <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/arr_delay_route.csv", header = TRUE)
+
+arrdelay_route <- plyr::arrange(arrdelay_route, route)
+
+arrdel_route <- ggplot(data=arrdelay_route, aes(x=route, y=avgarrdelay, color=route, fill=route)) + geom_bar(stat = "identity") + ggtitle("Longest Average Arrival Delays") + labs(x="Route", y="Arrival Delay (Minutes)") + scale_y_continuous(labels=comma)  + theme(axis.text.x=element_text(angle=90, hjust=1), plot.title= element_text(color="#666666", size=12, hjust=.5))+ theme(legend.position="none")
+arrdel_route
+ggplotly(arrdel_route)
+```
+
+
+### Routes with Longest Departure Delays
+```{r}
+depdelay_route <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/dep_delay_route.csv", header = TRUE)
+
+depdelay_route <- plyr::arrange(depdelay_route, route)
+
+depdel_route <- ggplot(data=depdelay_route, aes(x=route, y=avgdepdelay, color=route, fill=route)) + geom_bar(stat = "identity") + ggtitle("Longest Average Departure Delays") + labs(x="Route", y="Departure Delay (Minutes)") + scale_y_continuous(labels=comma)  + theme(axis.text.x=element_text(angle=90, hjust=1), plot.title= element_text(color="#666666", size=12, hjust=.5))+ theme(legend.position="none")
+depdel_route
+ggplotly(depdel_route)
+```
 
 Weather Metrics 
 =======================================================================
