@@ -1,4 +1,4 @@
--- Likelihood of a delay based onvaried rainfall depth
+-- Likelihood of a delay based on varied rainfall depth
 
 drop table if exists delay_depth;
 create table delay_depth as
@@ -20,4 +20,3 @@ create table delay_depth as
         group by origin, precip_bin
     ) O
     group by O.origin;
-

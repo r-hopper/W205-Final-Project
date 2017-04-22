@@ -14,15 +14,14 @@ wget --no-check-certificate "$URL_stations" -O weather_stations.txt
 # Unzip data
 unzip Airports.zip
 
-# Get weather data from 2007 to current
-
+# Make directory on HDFS
 hdfs dfs -mkdir /user/w205/final_project/weather
 
-# Get GHCN data by year
+# Get GHCN data by year from 2007 to current
 # Set current year
 cur_year=`date +"%Y"`
 start_year=2007
-# Iterate through years and download data
+# Iterate through years and download data, load to HDFS, delete
 for (( c=$start_year; c<=$cur_year; c++))
 do
     URL_GHCN="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/$c.csv.gz"
@@ -33,7 +32,7 @@ do
     rm $c.csv
 done
 
-# Modify airports to remove headers
+# Modify airports and airport/weather station file to remove headers
 OLD_FILE="655213050_T_MASTER_CORD.csv"
 NEW_FILE="airports.csv"
 tail -n +2 $OLD_FILE > $NEW_FILE
@@ -41,7 +40,6 @@ tail -n +2 $OLD_FILE > $NEW_FILE
 tail -n +2 $MY_CWD/airports_stations.csv airports_stations.csv
 
 # Load to HDFS
-
 hdfs dfs -put airports.csv /user/w205/final_project/weather
 hdfs dfs -put weather_stations.txt /user/w205/final_project/weather
 hdfs dfs -mkdir /user/w205/final_project/weather/airport_stations
@@ -55,5 +53,3 @@ rm weather_stations.txt
 rm airports_stations.csv
 
 cd $MY_CWD
-
-
