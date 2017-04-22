@@ -43,22 +43,17 @@ cd $MY_CWD
 #Step 3: Run Air travel queries
 cd airline_eda
 
-# Run all SQL files
-hive -f busiest_departing_airports.sql
-hive -f delay_by_routes.sql
-hive -f delay_cause_frequency.sql
-hive -f delay_dayofweek.sql
-hive -f more_than_2_per_day.sql
-hive -f queries_for_csv_export.sql
-hive -f queries_for_csv_export_2.sql
+#Create tables for Hive queries
 hive -f tables_for_csv_export.sql
-hive -f tables_for_csv_export_2.sql
-hive -f weather_cancellation_by_route_day.sql
-hive -f weather_delay_by_route_day.sql
 
-hive -f eda_queries.sql
+#Run queries to create CSVs to be saved for dashboard
+./final_csv_export.sh
+
+echo "Flight Metrics Queried and Exported"
 
 #Step 4: Load Weather Data
+cd $MY_CWD
+
 cd weather_data
 
 #Load to HDFS
@@ -84,16 +79,6 @@ echo "Weather Data Queried and Exported"
 
 cd $MY_CWD
 
-#Step 6: Export Airline Queries to CSV
-cd airline_eda
-chmod u+x,g+x final_csv_export.sh
-./final_csv_export.sh
-cd $MY_CWD
 
-cd exporting_query_results
-chmod u+x,g+x exporting_query_results.sh
-./exporting_query_results.sh
 
-echo "Flight Metrics Exported"
 
-cd $MY_CWD
