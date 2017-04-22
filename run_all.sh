@@ -27,11 +27,11 @@ echo "Flight Data Loaded"
 # Combine monthly data to annual
 hive -f months_to_years.sql
 
-# Merge yearly data
-hive -f all_years.sql
-
 # Create five year blocks of data
 hive -f one_to_five_years.sql
+
+# Merge yearly data
+hive -f all_years.sql
 
 # Remove monthly files to leave just yearly and 5 year blocks
 hive -f cleanup_months.sql
