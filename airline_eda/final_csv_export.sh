@@ -28,6 +28,10 @@ hive -e 'set hive.cli.print.header=true; select * from origin_most_frequent_dela
 
 hive -e 'set hive.cli.print.header=true; select * from delay_cause_total_year' | sed 's/[\t]/,/g'  > delay_cause_total_year.csv
 
+hive -e 'set hive.cli.print.header=true; select * from top25airportsarr' | sed 's/[\t]/,/g'  > top25airportsarr.csv
+
+hive -e 'set hive.cli.print.header=true; select * from top25airportsdep' | sed 's/[\t]/,/g'  > top25airportsdep.csv
+
 cd ..
 mv airline_eda/dep_delay_route.csv flight_app/final_csv/dep_delay_route.csv
 mv airline_eda/arr_delay_route.csv flight_app/final_csv/arr_delay_route.csv
@@ -36,3 +40,5 @@ mv airline_eda/highest_long_delay_prop.csv flight_app/final_csv/highest_long_del
 mv airline_eda/worst_dayofweek_final.csv flight_app/final_csv/worst_dayofweek_final.csv
 mv airline_eda/origin_most_frequent_delay_cause.csv flight_app/final_csv/origin_most_frequent_delay_cause.csv
 mv airline_eda/delay_cause_total_year.csv flight_app/final_csv/delay_cause_total_year.csv
+mv airline_eda/top25airportsarr.csv flight_app/final_csv/top25airportsarr.csv
+mv airline_eda/top25airportsdep.csv flight_app/final_csv/top25airportsdep.csv
