@@ -273,8 +273,6 @@ ggplotly(likelihood_D)
 
 Forecasted Delays 
 =======================================================================
-
-
 Column {data-width=500}
 -----------------------------------------------------------------------
 
@@ -295,7 +293,7 @@ forecast_map
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Projected Delays in the Next 10 Days due to Precipitation
+### Projected Delays in the Next 10 Days Due to Precipitation
 
 ```{r}
 forecast_lines <- ggplot(data=forecast_delays[forecast_delays$Day != 'Total', ], aes(x=Day, y=Delays, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Next 10 Days", y= "Projected Number of Delays") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
