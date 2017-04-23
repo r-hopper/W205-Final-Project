@@ -194,13 +194,13 @@ ggplotly(depdel_route)
 Weather Metrics 
 =======================================================================
 
-Column
+Column {.tabset}
 -----------------------------------------------------------------------
 
 ### Annual Days with Precipitation
 
 ```{r}
-precip_days <- read.table("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q1_precip_days_ann.tsv", sep = '\t', header = FALSE)
+precip_days <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q1_precip_days_ann.csv", header = TRUE)
 colnames(precip_days) <- c("Origin", "Annual_days")
 precip_airports <- merge(precip_days, usairports, by.x=c("Origin"), by.y=c("IATA_FAA"))
 airportmap_precip <- ggmap(usmap) + geom_point(aes(x = long, y=lat, size=Annual_days, color = Origin), data=precip_airports, alpha = 1.0) +
@@ -215,7 +215,7 @@ Column {data-width=500}
 ### Likelihood of Weather Delays
 
 ```{r}
-likelihood_monthly <- read.table("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q2_likelihood_month.tsv", sep = '\t', header = FALSE)
+likelihood_monthly <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q2_likelihood_month.csv", header = TRUE)
 colnames(likelihood_monthly) <- c("Origin", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 likelihood_melt <- melt(likelihood_monthly, id="Origin", value.name = "value", variable.name = "Month")
 likelihood <- ggplot(data=likelihood_melt, aes(x=Month, y=value, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Month", y= "Percentage of Flights Delayed by Weather") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
@@ -226,10 +226,43 @@ ggplotly(likelihood)
 ### Likelihood of Delay due to Depth of Precipitation
 
 ```{r}
-likelihood_depth <- read.table("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q3_lilkelihood_based_on_depth.tsv", sep = '\t', header = FALSE)
+likelihood_depth <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q3_likelihood_based_on_depth.csv", header = TRUE)
 colnames(likelihood_depth) <- c("Origin", "0 in", "1/4 in", "1/2 in", "1 in", "1.5 in", "2 in", "3 in", "4 in")
 likelihood_depth_melt <- melt(likelihood_depth, id = "Origin", value.name = "likelihood", variable.name = "depth")
 likelihood_D <- ggplot(data=likelihood_depth_melt, aes(x=depth, y=likelihood, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Depth of Rainfall", y= "Likelihood of Delay") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
 likelihood_D
 ggplotly(likelihood_D)
+```
+
+
+
+Forecasted Delays 
+=======================================================================
+
+
+Column {.tabset}
+-----------------------------------------------------------------------
+
+
+### 10 Day Delay Forecast Map
+
+```{r}
+forecast <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q4_forecast_delays.csv", header = FALSE)
+colnames(forecast) <- c("Origin", "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8", "Day 9", "Day 10")
+forecast$Total <- rowSums(forecast[2:11])
+forecast_delays <- melt(forecast, id = "Origin", value.name = "Delays", variable.name = "Day")
+delays_airports <- merge(forecast, usairports, by.x=c("Origin"), by.y=c("IATA_FAA"))
+forecast_map <- ggmap(usmap) + geom_point(aes(x = long, y=lat, size=Total, color = Origin), data=delays_airports, alpha = 1.0) +
+  theme(legend.position = "none", axis.title = element_blank(), axis.text = element_blank(), axis.line = element_blank())
+forecast_map
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Projected Delays in the Next 10 Days due to Precipitation
+
+```{r}
+forecast_lines <- ggplot(data=forecast_delays[forecast_delays$Day != 'Total', ], aes(x=Day, y=Delays, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Next 10 Days", y= "Projected Number of Delays") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
+ggplotly(forecast_lines)
 ```
