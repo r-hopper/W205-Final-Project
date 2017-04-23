@@ -90,5 +90,7 @@ for code in top25:
 f.close()
 with open('flight_app/final_csv/Q4_forecast_delays.csv', 'wb') as outfile:
     w = csv.writer(outfile)
-    w.writerow(delays.items())
+    for key in delays.keys():
+        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3], delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
+
 

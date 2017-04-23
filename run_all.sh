@@ -75,10 +75,9 @@ cd weather_investigation
 chmod u+x,g+x weather_investigations.sh
 ./weather_investigations.sh
 
-echo "Weather Data Queried and Exported"
-
 cd $MY_CWD
 
+python weather_investigation/weather_forecast.py
 
-
+echo "Weather Data Queried and Exported"
 

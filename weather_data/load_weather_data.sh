@@ -37,6 +37,8 @@ OLD_FILE="432147446_T_MASTER_CORD.csv"
 NEW_FILE="airports.csv"
 tail -n +2 $OLD_FILE > $NEW_FILE
 
+cp $NEW_FILE > $MY_CWD
+
 tail -n +2 $MY_CWD/airports_stations.csv airports_stations.csv
 
 # Load to HDFS
@@ -48,7 +50,7 @@ hdfs dfs -put airports_stations.csv /user/w205/final_project/weather/airport_sta
 # Clean up directory
 rm Airports.zip
 rm 432147446_T_MASTER_CORD.csv
-#rm airports.csv
+rm airports.csv
 rm weather_stations.txt
 rm airports_stations.csv
 
