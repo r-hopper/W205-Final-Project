@@ -11,7 +11,7 @@ output:
 
 list.of.packages <- c("ggplot2", "flexdashboard", "ggmap", "maps", "mapdata", "reshape2", "stringr", "scales", "plotly", "plyr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+if(length(new.packages)) install.packages(new.packages, dependencies = TRUE)
 library(flexdashboard)
 library(ggplot2)
 library(ggmap)
@@ -26,6 +26,40 @@ library(plyr)
 
 Volume
 ======================================================================= 
+
+Sidebar {.sidebar}
+-----------------------------------------------------------------------
+
+**Dashboard Navigation:**
+
+Use the **Volume** tab to explore airports with the busiest departures and arrivals by volume
+
+Use the **Delays by Origin** tab to explore some of the worst offenders in delayed flights, most freuqent cause of delays, and the worst day of the week to fly in popular airports
+
+Use the **Delays by Route** tab to explore which routes experience the most delays 
+
+Use the **Weather Metrics** tab to explore how precipitation in large cities affect filghts in those cities 
+
+Use the **Forecasted Delays** tab to explore how likely a plane is likely to be delayed due to precipitation 
+
+
+
+**Notes:**
+
+Any and all graphs can be filtered by clicking on the airport or city in the margin
+
+For optimal view of the dashboard, please maximize your window
+
+Data is based on historical airport and weather data from the last 10 years 
+
+
+
+
+**Authors:** 
+
+Michael Alexander, Mike Amodeo, Roseanna Hopper, Yifan Sun
+
+
 
 Column {.tabset}
 -----------------------------------------------------------------------
@@ -239,9 +273,7 @@ ggplotly(likelihood_D)
 
 Forecasted Delays 
 =======================================================================
-
-
-Column {.tabset}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 
@@ -261,7 +293,7 @@ forecast_map
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Projected Delays in the Next 10 Days due to Precipitation
+### Projected Delays in the Next 10 Days Due to Precipitation
 
 ```{r}
 forecast_lines <- ggplot(data=forecast_delays[forecast_delays$Day != 'Total', ], aes(x=Day, y=Delays, group = Origin, color = Origin)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Next 10 Days", y= "Projected Number of Delays") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
