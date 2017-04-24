@@ -69,12 +69,17 @@ Column {.tabset}
 ```{r}
 airports <- read.csv("https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat", header = FALSE)
 colnames(airports) <- c("ID", "name", "city", "country", "IATA_FAA", "ICAO", "lat", "long", "altitude", "timezone", "DST")
-busydep <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/top25airportsdep.csv")
-busyarr <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/top25airportsarr.csv")
+busydep <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/top25airportsdep.csv", header = FALSE)
+colnames(busydep) <- c("ID", "Origin", "X2007", "X2008", "X2009", "X2010", "X2011", "X2012", "X2013", "X2014", "X2015", "X2016")
+busyarr <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/top25airportsarr.csv", header = FALSE)
+colnames(busyarr) <- c("ID", "Dest", "X2007", "X2008", "X2009", "X2010", "X2011", "X2012", "X2013", "X2014", "X2015", "X2016")
+busydep <- busydep[-1,]
+busyarr <- busyarr[-1,]
 years <- c(colnames(busydep)[3: ncol(busydep)])  
 usairports <- subset(airports, country == "United States")
+busydep[, years] <- lapply(busydep[, years], function(x) as.numeric(as.character(x)))
+busyarr[, years] <- lapply(busyarr[, years], function(x) as.numeric(as.character(x)))
 busydepairports <- merge(busydep, usairports, by.x=c("Origin"), by.y=c("IATA_FAA"))
-
 busydepairports$meanvol <- rowMeans(busydep[, years], na.rm = T)
 
 
