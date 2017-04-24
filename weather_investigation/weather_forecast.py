@@ -1,24 +1,15 @@
-# Sample code from WU
 
 import urllib2
 import json
-# f = urllib2.urlopen('http://api.wunderground.com/api/WU_9585652/geolookup/conditions/q/IA/Cedar_Rapids.json')
-# json_string = f.read()
-# parsed_json = json.loads(json_string)
-# location = parsed_json['location']['city']
-# temp_f = parsed_json['current_observation']['temp_f']
-# print ("Current temperature in %s is: %s".format(location, temp_f))
-# f.close()
+import csv
+import requests
 
 # Import airports with lat lon
-import csv
-
 with open('weather_data/airports.csv', mode='r') as infile:
     reader = csv.reader(infile)
     airports = dict((rows[2],(rows[18], rows[23])) for rows in reader)
 
-#airports = csv.reader(open('/final_project/weather/airports.csv', 'rb')) # edit path
-airports_25 = []
+# 25 Busiest US Airports
 top25 = ['ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC',
     'SFO', 'MCO', 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA']
 
@@ -31,36 +22,37 @@ with open('flight_app/final_csv/Q3_likelihood_based_on_depth.csv', mode = 'r') a
 # Import volume of flights
 with open('flight_app/final_csv/top25airportsdep.csv', mode = 'r') as infile:
     reader = csv.reader(infile)
-    volume = dict((rows[1], (int(rows[2]) + int(rows[3]) + int(rows[4]) + int(rows[5]) + int(rows[6]) + int(rows[7]) + int(rows[8]) + int(rows[9]) + int(rows[10]) + int(rows[11]))/3650) for rows in reader)
+    volume = dict((rows[1], (int(rows[2]) + int(rows[3]) + int(rows[4]) + int(rows[5]) +
+    int(rows[6]) + int(rows[7]) + int(rows[8]) + int(rows[9]) + int(rows[10]) + int(rows[11]))/3650) for rows in reader)
 
 # Get weather data
-import requests
 
-# Set some empty dictionaries
+# Set some empty dictionaries to populate
 rain = {}
 likelihood = {}
 delays = {}
+headers = ('Origin','','','','','','','','','','')
 
-# Start a for loop
+# Iterate through 25 busiest airports by 3 leter code
 for code in top25:
     lat = airports[code][0]
     lon = airports[code][1]
     # Get weather data for each airport based on airport lat/lon
-    # r = requests.get('http://api.wunderground.com/api/bd7371e9065e60d4/forecast10day/q/{0},{1}.json'.format(lat, lon))
-    # data = r.json
-
     f = urllib2.urlopen('http://api.wunderground.com/api/bd7371e9065e60d4/forecast10day/q/{0},{1}.json'.format(lat, lon))
     json_string = f.read()
     parsed_json = json.loads(json_string)
-    print parsed_json.keys()
 
-    # assmeble daily rainfall depth
+    # Assmeble daily rainfall depth
     rain_temp = []
+    j = 1 # set counter
+    # Iterate through days of 10 day forecast
     for day in parsed_json['forecast']['simpleforecast']['forecastday']:
-        rain_temp.append(int(day['qpf_allday']['mm']))
+        rain_temp.append(float(day['qpf_allday']['mm']))
+        headers[j] = day # Add date to be header of export
+        j += 1
     rain[code] = rain_temp
 
-    # Assemble likelihood based on rainfall depth
+    # Assemble delay likelihood per day based on rainfall depth
     likelihood_temp = []
     for i in range(len(rain_temp)):
         if rain_temp[i] == 0:
@@ -81,16 +73,26 @@ for code in top25:
             likelihood_temp.append(float(likelihood_data[code][7]))
     likelihood[code] = likelihood_temp
 
-    # Calculate delays per day based on likelihood
+    # Calculate delays per day based on delay likelihood and forecasted depth
     delays_temp = []
     for i in range(len(rain_temp)):
         delays_temp.append(round(volume[code] * likelihood_temp[i],0))
     delays[code] = delays_temp
 
 f.close()
+
+# Export Delays with a header.
 with open('flight_app/final_csv/Q4_forecast_delays.csv', 'wb') as outfile:
     w = csv.writer(outfile)
+    w.writerow(header)
     for key in delays.keys():
-        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3], delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
+        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3],
+        delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
 
-
+# Export predicted rainfall
+with open('flight_app/final_csv/Q5_forecast_rain.csv', 'wb') as outfile:
+    w = csv.writer(outfile)
+    w.writerow(header)
+    for key in rain.keys():
+        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3],
+        delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
