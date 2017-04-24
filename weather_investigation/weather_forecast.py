@@ -50,7 +50,7 @@ for code in top25:
     # Iterate through days of 10 day forecast
     for day in parsed_json['forecast']['simpleforecast']['forecastday']:
         rain_temp.append(float(day['qpf_allday']['mm']))
-        headers[j] = day # Add date to be header of export
+        headers[j] = day['date']['weekday'] # Add date to be header of export
         j += 1
     rain[code] = rain_temp
 
@@ -96,4 +96,3 @@ with open('flight_app/final_csv/Q5_forecast_rain.csv', 'wb') as outfile:
     w.writerow(headers)
     for key in rain.keys():
         w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3], delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
-
