@@ -8,11 +8,11 @@ Run months_to_years.sql. This will compile all of the separate monthly files by 
 
 ## Step 3
 
-Run all_years.sql. This will compile all of the years into one table.
+Run one_to_five_years.sql, which will separate the full ten years into five-year blocks.
 
 ## Step 4
 
-Run one_to_five_years.sql, which will separate the full ten years into five-year blocks.
+Run all_years.sql. This will compile all of the years into one table.
 
 ## Step 5
 
