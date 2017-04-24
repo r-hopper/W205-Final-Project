@@ -48,10 +48,11 @@ Alternatively, the user can run the steps individually:
   
   
   
+  
 **Main page:**  
 ![Image of main page](https://github.com/r-hopper/W205-Final-Project/blob/master/flight_app/images/dashboard_main_page.png)
   
-   
+  
 **Delay tab:** 
 ![Image of delay tab](https://github.com/r-hopper/W205-Final-Project/blob/master/flight_app/images/dashboard_delay_tab.png)
   
