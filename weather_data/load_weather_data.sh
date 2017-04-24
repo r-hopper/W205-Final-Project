@@ -7,6 +7,8 @@ cd ~/staging/final_project
 # Load weather data from 1997, weather stations, and airports
 ##############################
 # Get airport and weather station location files
+# Airport file name may change. If error, check this link for update and download pre-packed zipfile:
+# https://www.transtats.bts.gov/Fields.asp?Table_ID=288
 URL_airports="https://transtats.bts.gov/ftproot/TranStatsData/432147446_T_MASTER_CORD.zip"
 URL_stations="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt"
 wget --no-check-certificate "$URL_airports" -O Airports.zip
@@ -55,4 +57,3 @@ rm weather_stations.txt
 rm airports_stations.csv
 
 cd $MY_CWD
-
