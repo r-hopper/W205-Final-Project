@@ -275,7 +275,7 @@ airportmap_precip
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Likelihood of Weather Delays
+### Percentage of Flights Delayed by Weather
 
 ```{r}
 likelihood_monthly <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final-Project/master/flight_app/final_csv/Q2_likelihood_month.csv", header = TRUE)
