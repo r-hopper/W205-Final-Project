@@ -44,4 +44,14 @@ Alternatively, the user can run the steps individually:
 5. Navigate to the folder /weather_investigation and execute the file weather_investigations.sh. This file will perform the weather metrics queries on the tables in Hive and export tsv files to be used in the dashboard.  
     a. To run the last weather metric (10 day forecasted delays), navigate back up to the main directory of the repository and run the python script /weather_investigation/weather_forecast.py.  
   
-6. Open R Studio on a local machine, and execute the file /flight_app/dashboard.Rmd. This file will create an html file of the dashboard displaying all metrics. It references output files that are pre-loaded into the repo on Github. To view any replicated files, the files in the folder /flight_app/final_csv will need to be migrated by the user from the EC2 instance to the user’s local machine.
+6. Open R Studio on a local machine, and execute the file /flight_app/dashboard.Rmd. This file will create an html file of the dashboard displaying all metrics. It references output files that are pre-loaded into the repo on Github. To view any replicated files, the files in the folder /flight_app/final_csv will need to be migrated by the user from the EC2 instance to the user’s local machine.  
+  
+  
+Main page:  
+![Image of main page](https://github.com/r-hopper/W205-Final-Project/blob/master/flight_app/images/dashboard_main_page.png)
+  
+Delay tab:  
+![Image of delay tab](https://github.com/r-hopper/W205-Final-Project/blob/master/flight_app/images/dashboard_delay_tab.png)
+  
+Forecast tab:
+![Image of forecast tab](https://github.com/r-hopper/W205-Final-Project/blob/master/flight_app/images/dashboard_forecast_tab.png)
