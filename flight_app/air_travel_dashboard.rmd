@@ -192,10 +192,15 @@ delay_cause_timeseries <- melt(delay_cause, id.vars="delay_cause_total_year.year
 
 levels(delay_cause_timeseries$Cause) <- c('Carrier', 'Weather', 'National Airspace System', 'Security', 'Late Aircraft')
 
-delay_plot <- ggplot(data=delay_cause_timeseries, aes(x=delay_cause_total_year.year, y=value, group = Cause, color = Cause)) + geom_line() + geom_point(size=1, shape = 21, fill = "white") + labs(x="Year", y= "Total Annual Delay Minutes") + scale_y_continuous(labels = comma) + theme(axis.text.x=element_text(angle=90, hjust=1))
+delay_plot <- ggplot(data=delay_cause_timeseries, aes(x=delay_cause_total_year.year, y=value, group = Cause, color = Cause)) + 
+  geom_line() + 
+  geom_point(size=1, shape = 21, fill = "white") + 
+  labs(x="Year", y= "Total Annual Delay Minutes") + 
+  scale_color_discrete(name = "Cause of Delay") +
+  scale_y_continuous(labels = comma) + 
+  theme(axis.text.x=element_text(angle=90, hjust=1))
 
 ggplotly(delay_plot)
-
 ```
 
 ### Worst Weekday Delays 
@@ -205,13 +210,17 @@ weekday_delay <- read.csv("https://raw.githubusercontent.com/r-hopper/W205-Final
 
 weekday_agg = as.data.frame(table(weekday_delay$worst_dayofweek_final.worst_dayofweek))
 
-weekday_plot <- ggplot(data=weekday_agg, aes(x=Var1,y=Freq)) +
+weekday_agg$Var1 <- factor(weekday_agg$Var1, levels= c("Sunday", "Monday", 
+    "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+
+weekday_plot <- ggplot(data=weekday_agg, aes(x=Var1,y=Freq,color=Var1,fill=Var1)) +
   geom_bar(position="dodge",stat="identity") + 
+  theme(legend.position = "none") +
+  labs(x="", y= "Airport Frequency") +
   coord_flip() +
-  ggtitle("Worst Day for Delays")
+  ggtitle("Worst Day for Delays") 
 
 ggplotly(weekday_plot)
-
 ```
 
 
