@@ -20,10 +20,12 @@ with open('flight_app/final_csv/Q3_likelihood_based_on_depth.csv', mode = 'r') a
 #likelihood_data = csv.reader(open('/flight_app/final_csv/Q3_likelihood_based_on_depth.csv', 'rb'))
 
 # Import volume of flights
+volume = {}
 with open('flight_app/final_csv/top25airportsdep.csv', mode = 'r') as infile:
     reader = csv.reader(infile)
-    volume = dict((rows[1], (int(rows[2]) + int(rows[3]) + int(rows[4]) + int(rows[5]) +
-    int(rows[6]) + int(rows[7]) + int(rows[8]) + int(rows[9]) + int(rows[10]) + int(rows[11]))/3650) for rows in reader)
+    reader.next()
+    for rows in reader:
+        volume[rows[1]] = (int(rows[2]) + int(rows[3]) + int(rows[4]) + int(rows[5]) + int(rows[6]) + int(rows[7]) + int(rows[8]) + int(rows[9]) + int(rows[10]) + int(rows[11]))/3650
 
 # Get weather data
 
@@ -31,7 +33,7 @@ with open('flight_app/final_csv/top25airportsdep.csv', mode = 'r') as infile:
 rain = {}
 likelihood = {}
 delays = {}
-headers = ('Origin','','','','','','','','','','')
+headers = ['Origin','','','','','','','','','','']
 
 # Iterate through 25 busiest airports by 3 leter code
 for code in top25:
@@ -79,20 +81,19 @@ for code in top25:
         delays_temp.append(round(volume[code] * likelihood_temp[i],0))
     delays[code] = delays_temp
 
-f.close()
+    f.close()
 
 # Export Delays with a header.
 with open('flight_app/final_csv/Q4_forecast_delays.csv', 'wb') as outfile:
     w = csv.writer(outfile)
-    w.writerow(header)
+    w.writerow(headers)
     for key in delays.keys():
-        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3],
-        delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
+        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3], delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
 
 # Export predicted rainfall
 with open('flight_app/final_csv/Q5_forecast_rain.csv', 'wb') as outfile:
     w = csv.writer(outfile)
-    w.writerow(header)
+    w.writerow(headers)
     for key in rain.keys():
-        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3],
-        delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
+        w.writerow((key, delays[key][0], delays[key][1], delays[key][2], delays[key][3], delays[key][4], delays[key][5], delays[key][6], delays[key][7], delays[key][8], delays[key][9]))
+

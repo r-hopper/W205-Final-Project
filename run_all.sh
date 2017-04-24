@@ -18,10 +18,6 @@ cd transform_flight_data
 # Load flight data into Hive
 hive -f load_2007_2016.sql
 
-# Remove flight data from HDFS to free up space
-chmod u+x,g+x flight_data_HDFS_cleanup.sh
-./flight_data_HDFS_cleanup.sh
-
 echo "Flight Data Loaded"
 
 # Combine monthly data to annual
@@ -29,6 +25,10 @@ hive -f months_to_years.sql
 
 # Create five year blocks of data
 hive -f one_to_five_years.sql
+
+# Remove flight data from HDFS to free up space
+chmod u+x,g+x flight_data_HDFS_cleanup.sh
+./flight_data_HDFS_cleanup.sh
 
 # Merge yearly data
 hive -f all_years.sql
@@ -80,4 +80,13 @@ cd $MY_CWD
 python weather_investigation/weather_forecast.py
 
 echo "Weather Data Queried and Exported"
+
+# Remove weather data from HDFS to free up space
+cd weather_data
+
+chmod u+x,g+x weather_data_cleanup.sh
+./weather_data_cleanup.sh
+
+cd $MY_CWD
+
 

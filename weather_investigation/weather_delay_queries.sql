@@ -8,9 +8,9 @@ create table delays_weather as
     count(case when weatherdelay > 0 then 1 else null end > 0) as delayed_weather,
     sum(weatherdelay) as total_weather_delay,
     cast(count(case when depdelay > 0 then 1 else null end) / count(flightnum) as decimal (3,2)) as percent_delayed
-    from precip_format, flights_2012_2016
-    where precip_format.airport = flights_2012_2016.origin
-    and precip_format.date_rev = flights_2012_2016.flightdate
+    from precip_format, flights_2007_2016
+    where precip_format.airport = flights_2007_2016.origin
+    and precip_format.date_rev = flights_2007_2016.flightdate
     and airport in ('ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC',
         'SFO', 'MCO', 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA')
     group by airport, date_rev, magnitude, weather_type
@@ -25,7 +25,7 @@ create table airport_days as
     count(case when weatherdelay > 0 then 1 else null end) as delayed_weather,
     cast(count(case when depdelay > 0 then 1 else null end) / count(flightnum) as decimal (3,2)) as percent_delayed,
     cast(count(case when weatherdelay > 0 then 1 else null end) / count(flightnum) as decimal (3,2)) as percent_weather
-    from flights_2012_2016
+    from flights_2007_2016
     group by origin, flightdate, month;
 
 -- Combine airport days with rainfall
@@ -84,3 +84,4 @@ create table likelihood_monthly as
     where airport in ('ATL', 'ORD', 'DFW', 'DEN', 'LAX', 'PHX', 'IAH', 'LAS', 'DTW', 'MSP', 'EWR', 'SLC',
         'SFO', 'MCO', 'BOS', 'CLT', 'JFK', 'LGA', 'BWI', 'SEA', 'PHL', 'SAN', 'MDW', 'DCA', 'TPA')
     group by origin, airport_days.month;
+
