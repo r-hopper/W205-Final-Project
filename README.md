@@ -17,7 +17,7 @@ The Airline Data Dashboard application uses publicly available data from two fed
 
 ## Execution Instructions  
   
-Prerequisites: In order to replicate the results for this project, clone this directory in an EC2 instance. Due to the data being analyzed, we recommend that the instance be of **at least extra-large size**, with attached EBS storage of **at least 100 GB**. The execution also requires the following being set up prior to execution:  
+Prerequisites: In order to replicate the results for this project, clone this directory in an EC2 instance. Due to the data being analyzed, we recommend that the instance be of **at least extra-large size**, with attached EBS storage of **at least 200 GB**. The execution also requires the following being set up prior to execution:  
 * HDFS, Hive and Spark-SQL on EC2 
 * RStudio with markdown capabilities installed locally 
   
