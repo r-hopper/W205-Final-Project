@@ -20,7 +20,7 @@ The Airline Data Dashboard application uses publicly available data from two fed
 ## Execution Instructions  
   
 Prerequisites: In order to replicate the results for this project, clone this directory in an EC2 instance. Due to the data being analyzed, we recommend that the instance be of **at least extra-large size**, with attached EBS storage of **at least 200 GB**. The execution also requires the following being set up prior to execution:  
-* HDFS, Hive and Spark-SQL on EC2 
+* HDFS, Postgres, Hive, and Spark-SQL on EC2 
 * RStudio with markdown capabilities installed locally 
   
 Once an instance is set up and has both Hadoop and Postgres running, the application and all of its data can be replicated in either of two ways. First, it can be run by executing the run_all.sh shell file in the main directory of the repository. This will download all data, load to HDFS, and build and execute queries in Hive. Once complete, a user can open the file air_travel_dashboard.Rmd on their local machine with R installed, run the file, and view the output as an html file.  
