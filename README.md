@@ -6,6 +6,8 @@ April 24, 2017
 ## Airline Data Dashboard  
   
 We have created an airline data dashboard, hosted through R, which examines trends in U.S. flight data and weather from 2007 through 2016. This application downloads historical flight and weather data, uploads the data into a Hadoop Distributed File System (HDFS), loads the data into tables in Hive, queries the tables according to several custom defined metrics related to airport and flight performance, and exports the output of these metrics to an R-based dashboard that graphically displays the metrics.  
+
+[ollow this link to open the dashboard in your browser](https://r-hopper.github.io/W205-Final-Project/flight_app/Air_travel_dashboard.html)
   
 ## Data Sources  
   
